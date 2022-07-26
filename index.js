@@ -1,15 +1,15 @@
 import express from 'express'
-import { getAllCars } from './src/cars.js'
+import { createCar, getAllCars, updateCar } from './src/cars.js'
 
 const app = express()
 const PORT = 3002
+//this tells the code that the info in the body of the request is json
 app.use(express.json())
 
-app.get('/', (req, res) => {
-  res.send(`Express is working!!!!! now nodemon is working`)
-})
-
+//put routes here
 app.get('/cars', getAllCars)
+app.post('/cars', createCar)
+app.patch('/cars/:id', updateCar)
 
 app.listen(PORT, () => {
   console.log(`Listening on http://localhost:${PORT} ...`)
